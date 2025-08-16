@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/f1-banner.png" alt="F1 Data Lab Banner" width="800"/>
+  <img src="f1-banner.png" alt="F1 Data Lab Banner" width="800"/>
 </p>
 
 #  🏎 F1 Data Lab
