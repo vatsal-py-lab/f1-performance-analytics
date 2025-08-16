@@ -4,7 +4,7 @@
 
 #  🏎 F1 Data Lab
 
-A clean, end-to-end Formula 1 data project combining **analytics, machine learning, and interactive dashboards** — designed for clarity, reusability, and portfolio impact.  
+A clean, end-to-end Formula 1 data project combining **racing sport analytics, machine learning, and interactive dashboards** — designed for clarity, reusability, and portfolio impact.  
 
 ---
 
