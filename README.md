@@ -2,7 +2,9 @@
   <img src="f1-banner.png" alt="F1 Data Lab Banner" width="800"/>
 </p>
 
-#  🏎 F1 Data Lab: Exploring Race Data and Performance Analytics
+#  🏎 F1 Data Lab
+
+<h3 align = "center"> Exploring Race Data and Performance Analytics</h3>
 
 ***Note: The project is currently in development and will be deployed in December following rigorous testing. Visuals for the project have been made available for portfolio purposes, allowing stakeholders to view its progress and design..***
 
