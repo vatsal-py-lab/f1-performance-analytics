@@ -2,7 +2,7 @@
   <img src="f1-banner.png" alt="F1 Data Lab Banner" width="800"/>
 </p>
 
-#  🏎 F1 Data Lab
+#  🏎 F1 Data Lab: Exploring Race Data and Performance Analytics
 
 Formula 1 is one of the most data-rich sports in the world. Every race weekend generates a massive amount of information — from lap times, pit stop strategies, and tyre choices to weather conditions, safety car deployments, and driver performance trends.  
 
