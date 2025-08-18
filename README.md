@@ -6,7 +6,7 @@
 
 <h3 align = "center"><i><b>Unlocking insights from every lap of Formula 1 with FastF1</i></b></h3>
 
-<h6>Note: The project is currently in development and will be deployed in December following rigorous testing. Visuals for the project have been made available for portfolio purposes, allowing recruiters to view its progress and design.</h6>
+<h6>Note: The project is currently in development and will be deployed in December following rigorous testing. Visuals for the project have been made available for portfolio purposes, allowing stakeholders/recruiters to view its progress and design.</h6>
 
 ---
 
