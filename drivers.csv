@@ -1,0 +1,21 @@
+DriverId,DriverCode,Team,CarNumber,DriverName
+1,GAS,Alpine,10,Pierre Gasly
+2,DOO,Alpine,7,Jack Doohan
+3,ALO,Aston Martin,14,Fernando Alonso
+4,STR,Aston Martin,18,Lance Stroll
+5,LEC,Ferrari,16,Charles Leclerc
+6,HAM,Ferrari,44,Lewis Hamilton
+7,BEA,Haas F1 Team,87,Oliver Bearman
+8,OCO,Haas F1 Team,31,Esteban Ocon
+9,HUL,Kick Sauber,27,Nico Hulkenberg
+10,BOR,Kick Sauber,5,Gabriel Bortoleto
+11,PIA,McLaren,81,Oscar Piastri
+12,NOR,McLaren,4,Lando Norris
+13,ANT,Mercedes,12,Andrea Kimi Antonelli
+14,RUS,Mercedes,63,George Russell
+15,TSU,Racing Bulls,22,Yuki Tsunoda
+16,HAD,Racing Bulls,6,Isack Hadjar
+17,VER,Red Bull Racing,1,Max Verstappen
+18,LAW,Red Bull Racing,30,Liam Lawson
+19,ALB,Williams,23,Alexander Albon
+20,SAI,Williams,55,Carlos Sainz
