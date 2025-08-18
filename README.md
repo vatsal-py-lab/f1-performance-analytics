@@ -4,9 +4,11 @@
 
 #  🏎 F1 Data Lab
 
-<h3 align = "center"> Scrapping Data through FastF1 for Racing Sports Analytics</h3>
+<h3 align = "center"><i><b>Unlocking insights from every lap of Formula 1 with FastF1</i></b></h3>
 
-***Note: The project is currently in development and will be deployed in December following rigorous testing. Visuals for the project have been made available for portfolio purposes, allowing stakeholders to view its progress and design..***
+<h6>Note: The project is currently in development and will be deployed in December following rigorous testing. Visuals for the project have been made available for portfolio purposes, allowing recruiters to view its progress and design.</h6>
+
+---
 
 Formula 1 is one of the most data-rich sports in the world. Every race weekend generates a massive amount of information — from lap times, pit stop strategies, and tyre choices to weather conditions, safety car deployments, and driver performance trends.  
 
