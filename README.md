@@ -2,7 +2,7 @@
   <img src="f1-banner.png" alt="F1 Data Lab Banner" width="800"/>
 </p>
 
-#  🏎 F1 Data Lab
+#  🏎 Performance Analytics for High-Speed Motorsports - F1 Car Racing
 
 <h3 align = "center"><i><b>Unlocking insights from every lap of Formula 1 with FastF1</i></b></h3>
 
