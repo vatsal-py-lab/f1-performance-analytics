@@ -4,7 +4,7 @@
   "metadata": {
     "colab": {
       "provenance": [],
-      "authorship_tag": "ABX9TyNuV1NEsN9RR8AsR4vzf4QQ",
+      "authorship_tag": "ABX9TyOW5D8q1OlLuAh4Frm10Lxy",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -28,13 +28,13 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 279,
+      "execution_count": 410,
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
         },
         "id": "K402xPm9czfI",
-        "outputId": "85b3a550-029e-471e-d0ec-4b4fea1b2d9c",
+        "outputId": "a260cade-79e8-435a-bddd-5803e1c8fbfd",
         "collapsed": true
       },
       "outputs": [
@@ -94,7 +94,7 @@
       "metadata": {
         "id": "fzoBVTwI_H-x"
       },
-      "execution_count": 280,
+      "execution_count": 411,
       "outputs": []
     },
     {
@@ -110,9 +110,9 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "adA9AezsFhsk",
-        "outputId": "44370b34-5db1-40b6-c796-9c040e4bd89b"
+        "outputId": "29b74537-b243-47be-de92-cebd1b2498ad"
       },
-      "execution_count": 281,
+      "execution_count": 412,
       "outputs": [
         {
           "output_type": "stream",
@@ -137,7 +137,7 @@
       "metadata": {
         "id": "tjprtWKOF9ux"
       },
-      "execution_count": 282,
+      "execution_count": 413,
       "outputs": []
     },
     {
@@ -152,9 +152,9 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "pXiKnZCjGAWF",
-        "outputId": "bab9fe2c-2849-4014-d1f0-2d54618ce69b"
+        "outputId": "3dfea344-73f6-4327-b712-72bb4de05ae7"
       },
-      "execution_count": 283,
+      "execution_count": 414,
       "outputs": [
         {
           "output_type": "stream",
@@ -186,7 +186,7 @@
       "metadata": {
         "id": "_yKQqEJYFZyk"
       },
-      "execution_count": 284,
+      "execution_count": 415,
       "outputs": []
     },
     {
@@ -203,9 +203,9 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "RSX7VHtGSnHJ",
-        "outputId": "3982182e-125e-4d18-dd40-414344abeb54"
+        "outputId": "e8c58883-9241-4f09-e722-4e63fff9a20b"
       },
-      "execution_count": 285,
+      "execution_count": 416,
       "outputs": [
         {
           "output_type": "stream",
@@ -287,9 +287,9 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "-BXLHD2NU5IA",
-        "outputId": "63e66b99-153a-4f2c-d458-8f0f8618abeb"
+        "outputId": "801a7703-35d5-4552-aef7-d113f7bf2bc2"
       },
-      "execution_count": 286,
+      "execution_count": 417,
       "outputs": [
         {
           "output_type": "stream",
@@ -332,9 +332,9 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "bpzxxqk-v5Hn",
-        "outputId": "0fced873-082f-4a7c-8412-710af571c580"
+        "outputId": "874d5526-c890-4d51-e85f-ba4935e6da3b"
       },
-      "execution_count": 287,
+      "execution_count": 418,
       "outputs": [
         {
           "output_type": "stream",
@@ -351,6 +351,34 @@
           ]
         }
       ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "laps = session.laps[['Driver', 'DriverNumber', 'LapNumber', 'LapTime', 'Sector1Time', 'Sector2Time', 'Sector3Time',\n",
+        "                     'Position', 'Stint', 'Compound', 'TyreLife', 'PitInTime', 'PitOutTime', 'TrackStatus']]\n",
+        "laps.insert(0, 'LapId', range(1, len(laps) + 1))\n",
+        "\n",
+        "laps = pd.merge(laps, drivers[['DriverId', 'DriverCode']], left_on='Driver', right_on='DriverCode', how='left')\n",
+        "laps = laps.drop(columns=['DriverCode'])\n",
+        "laps = laps[['DriverId', 'Driver', 'LapId', 'LapNumber', 'LapTime', 'LapTime', 'Sector1Time', 'Sector2Time', 'Sector3Time',\n",
+        "                     'Position', 'Stint', 'Compound', 'TyreLife', 'PitInTime', 'PitOutTime', 'TrackStatus']]\n",
+        "laps.to_csv('laps.csv', index=False)"
+      ],
+      "metadata": {
+        "id": "pRxmQJW0_0r-"
+      },
+      "execution_count": 419,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "HYTVrLyg5PBG"
+      },
+      "execution_count": 419,
+      "outputs": []
     }
   ]
 }
