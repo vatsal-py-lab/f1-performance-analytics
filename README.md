@@ -4,7 +4,7 @@
 
 #  🏎 F1 Data Lab: Exploring Race Data and Performance Analytics
 
-Note: The visuals are available for portfolio, however the project is yet to be deployed.
+***Note: The visuals have been made available for portfolio purposes, however the project is yet to be deployed.***
 
 Formula 1 is one of the most data-rich sports in the world. Every race weekend generates a massive amount of information — from lap times, pit stop strategies, and tyre choices to weather conditions, safety car deployments, and driver performance trends.  
 
