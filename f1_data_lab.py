@@ -4,7 +4,7 @@
   "metadata": {
     "colab": {
       "provenance": [],
-      "authorship_tag": "ABX9TyOW5D8q1OlLuAh4Frm10Lxy",
+      "authorship_tag": "ABX9TyPKKbaJFBgUcaMga2/7liYq",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -28,13 +28,13 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 410,
+      "execution_count": 1,
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
         },
         "id": "K402xPm9czfI",
-        "outputId": "a260cade-79e8-435a-bddd-5803e1c8fbfd",
+        "outputId": "33b73aaf-761c-49d7-f64c-b75b948ea98d",
         "collapsed": true
       },
       "outputs": [
@@ -94,7 +94,7 @@
       "metadata": {
         "id": "fzoBVTwI_H-x"
       },
-      "execution_count": 411,
+      "execution_count": 2,
       "outputs": []
     },
     {
@@ -110,9 +110,9 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "adA9AezsFhsk",
-        "outputId": "29b74537-b243-47be-de92-cebd1b2498ad"
+        "outputId": "e7b42c28-9bc9-42ab-b54e-41d663ce8e70"
       },
-      "execution_count": 412,
+      "execution_count": 3,
       "outputs": [
         {
           "output_type": "stream",
@@ -137,14 +137,15 @@
       "metadata": {
         "id": "tjprtWKOF9ux"
       },
-      "execution_count": 413,
+      "execution_count": 4,
       "outputs": []
     },
     {
       "cell_type": "code",
       "source": [
         "# print columns using 'get_event_schedule' function for year 2025\n",
-        "schedule = fastf1.get_event_schedule(2025)\n",
+        "season = 2025\n",
+        "schedule = fastf1.get_event_schedule(season)\n",
         "print(schedule.columns)"
       ],
       "metadata": {
@@ -152,9 +153,9 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "pXiKnZCjGAWF",
-        "outputId": "3dfea344-73f6-4327-b712-72bb4de05ae7"
+        "outputId": "c0762276-371d-4e5d-8976-b02bcd4e98a2"
       },
-      "execution_count": 414,
+      "execution_count": 5,
       "outputs": [
         {
           "output_type": "stream",
@@ -186,15 +187,17 @@
       "metadata": {
         "id": "_yKQqEJYFZyk"
       },
-      "execution_count": 415,
+      "execution_count": 6,
       "outputs": []
     },
     {
       "cell_type": "code",
       "source": [
-        "# print columns using 'get_event_schedule' function for year 2025\n",
+        "# print columns using 'get_session' function for Melbourne GP for year 2025\n",
         "\n",
-        "session = fastf1.get_session(2025, 'Melbourne', 'R')\n",
+        "location = 'Melbourne'\n",
+        "session_type = 'R'\n",
+        "session = fastf1.get_session(season, location, session_type)\n",
         "session.load()\n",
         "print(session.laps.columns)"
       ],
@@ -203,9 +206,9 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "RSX7VHtGSnHJ",
-        "outputId": "e8c58883-9241-4f09-e722-4e63fff9a20b"
+        "outputId": "d6cc06d5-d60d-403e-bf31-6a1dabd5acfe"
       },
-      "execution_count": 416,
+      "execution_count": 7,
       "outputs": [
         {
           "output_type": "stream",
@@ -270,96 +273,30 @@
       "source": [
         "# creating data tables - drivers\n",
         "\n",
-        "driver = pd.DataFrame(columns=['DriverId', 'DriverCode', 'Team', 'CarNumber'])\n",
-        "driverName = {d: session.get_driver(d)['FullName'] for d in session.laps['Driver'].unique()}\n",
-        "driverName = pd.DataFrame(list(driverName.items()), columns=['DriverCode', 'DriverName'])\n",
-        "driver['Team'] = session.laps['Team']\n",
-        "driver['DriverCode'] = session.laps['Driver']\n",
-        "driver['CarNumber'] = session.laps['DriverNumber']\n",
-        "driver = driver.drop_duplicates().sort_values(by=['Team'])\n",
-        "driver['DriverId'] = range(1, len(session.laps['Driver'].unique()) + 1)\n",
-        "drivers = pd.merge(driver, driverName, on=\"DriverCode\", how=\"left\")\n",
-        "print(drivers[['DriverId', 'DriverCode', 'DriverName', 'Team', 'CarNumber']])\n",
-        "drivers.to_csv('drivers.csv', index=False)"
+        "driver = session.results[['Abbreviation', 'FullName', 'TeamName', 'DriverNumber']].copy()\n",
+        "driver.rename(columns={'Abbreviation': 'DriverCode',\n",
+        "                       'FullName': 'DriverName',\n",
+        "                       'TeamName': 'Team',\n",
+        "                       'DriverNumber': 'CarNumber'}, inplace=True)\n",
+        "driver['DriverId'] = range(1, len(driver) + 1)\n",
+        "driver = driver[['DriverId', 'DriverCode', 'DriverName', 'Team', 'CarNumber']]\n",
+        "driver.to_csv('drivers.csv', index=False)"
       ],
       "metadata": {
-        "colab": {
-          "base_uri": "https://localhost:8080/"
-        },
-        "id": "-BXLHD2NU5IA",
-        "outputId": "801a7703-35d5-4552-aef7-d113f7bf2bc2"
+        "id": "calF8CLpduq1"
       },
-      "execution_count": 417,
-      "outputs": [
-        {
-          "output_type": "stream",
-          "name": "stdout",
-          "text": [
-            "    DriverId DriverCode             DriverName             Team CarNumber\n",
-            "0          1        GAS           Pierre Gasly           Alpine        10\n",
-            "1          2        DOO            Jack Doohan           Alpine         7\n",
-            "2          3        ALO        Fernando Alonso     Aston Martin        14\n",
-            "3          4        STR           Lance Stroll     Aston Martin        18\n",
-            "4          5        LEC        Charles Leclerc          Ferrari        16\n",
-            "5          6        HAM         Lewis Hamilton          Ferrari        44\n",
-            "6          7        BEA         Oliver Bearman     Haas F1 Team        87\n",
-            "7          8        OCO           Esteban Ocon     Haas F1 Team        31\n",
-            "8          9        HUL        Nico Hulkenberg      Kick Sauber        27\n",
-            "9         10        BOR      Gabriel Bortoleto      Kick Sauber         5\n",
-            "10        11        PIA          Oscar Piastri          McLaren        81\n",
-            "11        12        NOR           Lando Norris          McLaren         4\n",
-            "12        13        ANT  Andrea Kimi Antonelli         Mercedes        12\n",
-            "13        14        RUS         George Russell         Mercedes        63\n",
-            "14        15        TSU           Yuki Tsunoda     Racing Bulls        22\n",
-            "15        16        HAD           Isack Hadjar     Racing Bulls         6\n",
-            "16        17        VER         Max Verstappen  Red Bull Racing         1\n",
-            "17        18        LAW            Liam Lawson  Red Bull Racing        30\n",
-            "18        19        ALB        Alexander Albon         Williams        23\n",
-            "19        20        SAI           Carlos Sainz         Williams        55\n"
-          ]
-        }
-      ]
+      "execution_count": 8,
+      "outputs": []
     },
     {
       "cell_type": "code",
       "source": [
         "# creating data tables - laps\n",
         "\n",
-        "print(session.laps.columns)"
-      ],
-      "metadata": {
-        "colab": {
-          "base_uri": "https://localhost:8080/"
-        },
-        "id": "bpzxxqk-v5Hn",
-        "outputId": "874d5526-c890-4d51-e85f-ba4935e6da3b"
-      },
-      "execution_count": 418,
-      "outputs": [
-        {
-          "output_type": "stream",
-          "name": "stdout",
-          "text": [
-            "Index(['Time', 'Driver', 'DriverNumber', 'LapTime', 'LapNumber', 'Stint',\n",
-            "       'PitOutTime', 'PitInTime', 'Sector1Time', 'Sector2Time', 'Sector3Time',\n",
-            "       'Sector1SessionTime', 'Sector2SessionTime', 'Sector3SessionTime',\n",
-            "       'SpeedI1', 'SpeedI2', 'SpeedFL', 'SpeedST', 'IsPersonalBest',\n",
-            "       'Compound', 'TyreLife', 'FreshTyre', 'Team', 'LapStartTime',\n",
-            "       'LapStartDate', 'TrackStatus', 'Position', 'Deleted', 'DeletedReason',\n",
-            "       'FastF1Generated', 'IsAccurate'],\n",
-            "      dtype='object')\n"
-          ]
-        }
-      ]
-    },
-    {
-      "cell_type": "code",
-      "source": [
         "laps = session.laps[['Driver', 'DriverNumber', 'LapNumber', 'LapTime', 'Sector1Time', 'Sector2Time', 'Sector3Time',\n",
         "                     'Position', 'Stint', 'Compound', 'TyreLife', 'PitInTime', 'PitOutTime', 'TrackStatus']]\n",
         "laps.insert(0, 'LapId', range(1, len(laps) + 1))\n",
-        "\n",
-        "laps = pd.merge(laps, drivers[['DriverId', 'DriverCode']], left_on='Driver', right_on='DriverCode', how='left')\n",
+        "laps = pd.merge(laps, driver[['DriverId', 'DriverCode']], left_on='Driver', right_on='DriverCode', how='left')\n",
         "laps = laps.drop(columns=['DriverCode'])\n",
         "laps = laps[['DriverId', 'Driver', 'LapId', 'LapNumber', 'LapTime', 'LapTime', 'Sector1Time', 'Sector2Time', 'Sector3Time',\n",
         "                     'Position', 'Stint', 'Compound', 'TyreLife', 'PitInTime', 'PitOutTime', 'TrackStatus']]\n",
@@ -368,16 +305,24 @@
       "metadata": {
         "id": "pRxmQJW0_0r-"
       },
-      "execution_count": 419,
+      "execution_count": 9,
       "outputs": []
     },
     {
       "cell_type": "code",
-      "source": [],
+      "source": [
+        "# creating data tables - weather\n",
+        "\n",
+        "weather = session.weather_data\n",
+        "weather.insert(0, 'WeatherId', range(1, len(weather) + 1))\n",
+        "weather[\"Session\"] = session_type\n",
+        "weather = weather[['WeatherId', 'Session', 'Time', 'AirTemp', 'Humidity', 'Pressure', 'Rainfall', 'TrackTemp', 'WindDirection', 'WindSpeed']]\n",
+        "weather.to_csv('weather.csv', index=False)"
+      ],
       "metadata": {
         "id": "HYTVrLyg5PBG"
       },
-      "execution_count": 419,
+      "execution_count": 10,
       "outputs": []
     }
   ]
