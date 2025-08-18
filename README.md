@@ -4,7 +4,7 @@
 
 #  🏎 F1 Data Lab
 
-<h3 align = "center"> Exploring Race Data and Performance Analytics</h3>
+<h3 align = "center"> Scrapping Data through FastF1 for Racing Sports Analytics</h3>
 
 ***Note: The project is currently in development and will be deployed in December following rigorous testing. Visuals for the project have been made available for portfolio purposes, allowing stakeholders to view its progress and design..***
 
