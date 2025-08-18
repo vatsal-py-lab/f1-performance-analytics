@@ -4,7 +4,7 @@
   "metadata": {
     "colab": {
       "provenance": [],
-      "authorship_tag": "ABX9TyPcZNsFkblPAlQ96YdwInEX",
+      "authorship_tag": "ABX9TyNuV1NEsN9RR8AsR4vzf4QQ",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -28,13 +28,13 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 248,
+      "execution_count": 279,
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
         },
         "id": "K402xPm9czfI",
-        "outputId": "40787518-2a7b-40e1-8947-d022c2e649da",
+        "outputId": "85b3a550-029e-471e-d0ec-4b4fea1b2d9c",
         "collapsed": true
       },
       "outputs": [
@@ -94,7 +94,7 @@
       "metadata": {
         "id": "fzoBVTwI_H-x"
       },
-      "execution_count": 249,
+      "execution_count": 280,
       "outputs": []
     },
     {
@@ -110,9 +110,9 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "adA9AezsFhsk",
-        "outputId": "21f9ac0a-3a2b-4a06-80da-e09a63929cc2"
+        "outputId": "44370b34-5db1-40b6-c796-9c040e4bd89b"
       },
-      "execution_count": 250,
+      "execution_count": 281,
       "outputs": [
         {
           "output_type": "stream",
@@ -137,7 +137,7 @@
       "metadata": {
         "id": "tjprtWKOF9ux"
       },
-      "execution_count": 251,
+      "execution_count": 282,
       "outputs": []
     },
     {
@@ -152,9 +152,9 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "pXiKnZCjGAWF",
-        "outputId": "6113f91d-f1e8-43e0-ab8b-ea08e329d359"
+        "outputId": "bab9fe2c-2849-4014-d1f0-2d54618ce69b"
       },
-      "execution_count": 252,
+      "execution_count": 283,
       "outputs": [
         {
           "output_type": "stream",
@@ -186,7 +186,7 @@
       "metadata": {
         "id": "_yKQqEJYFZyk"
       },
-      "execution_count": 253,
+      "execution_count": 284,
       "outputs": []
     },
     {
@@ -203,9 +203,9 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "RSX7VHtGSnHJ",
-        "outputId": "8a05efc0-527d-441e-81a9-dbcb0b53ab1a"
+        "outputId": "3982182e-125e-4d18-dd40-414344abeb54"
       },
-      "execution_count": 254,
+      "execution_count": 285,
       "outputs": [
         {
           "output_type": "stream",
@@ -276,7 +276,7 @@
         "driver['Team'] = session.laps['Team']\n",
         "driver['DriverCode'] = session.laps['Driver']\n",
         "driver['CarNumber'] = session.laps['DriverNumber']\n",
-        "driver = driver.drop_duplicates()\n",
+        "driver = driver.drop_duplicates().sort_values(by=['Team'])\n",
         "driver['DriverId'] = range(1, len(session.laps['Driver'].unique()) + 1)\n",
         "drivers = pd.merge(driver, driverName, on=\"DriverCode\", how=\"left\")\n",
         "print(drivers[['DriverId', 'DriverCode', 'DriverName', 'Team', 'CarNumber']])\n",
@@ -287,35 +287,67 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "-BXLHD2NU5IA",
-        "outputId": "ab89a687-7cce-45f0-c709-a992022572e5"
+        "outputId": "63e66b99-153a-4f2c-d458-8f0f8618abeb"
       },
-      "execution_count": 274,
+      "execution_count": 286,
       "outputs": [
         {
           "output_type": "stream",
           "name": "stdout",
           "text": [
             "    DriverId DriverCode             DriverName             Team CarNumber\n",
-            "0          1        VER         Max Verstappen  Red Bull Racing         1\n",
-            "1          2        GAS           Pierre Gasly           Alpine        10\n",
-            "2          3        ANT  Andrea Kimi Antonelli         Mercedes        12\n",
-            "3          4        ALO        Fernando Alonso     Aston Martin        14\n",
+            "0          1        GAS           Pierre Gasly           Alpine        10\n",
+            "1          2        DOO            Jack Doohan           Alpine         7\n",
+            "2          3        ALO        Fernando Alonso     Aston Martin        14\n",
+            "3          4        STR           Lance Stroll     Aston Martin        18\n",
             "4          5        LEC        Charles Leclerc          Ferrari        16\n",
-            "5          6        STR           Lance Stroll     Aston Martin        18\n",
-            "6          7        TSU           Yuki Tsunoda     Racing Bulls        22\n",
-            "7          8        ALB        Alexander Albon         Williams        23\n",
+            "5          6        HAM         Lewis Hamilton          Ferrari        44\n",
+            "6          7        BEA         Oliver Bearman     Haas F1 Team        87\n",
+            "7          8        OCO           Esteban Ocon     Haas F1 Team        31\n",
             "8          9        HUL        Nico Hulkenberg      Kick Sauber        27\n",
-            "9         10        LAW            Liam Lawson  Red Bull Racing        30\n",
-            "10        11        OCO           Esteban Ocon     Haas F1 Team        31\n",
+            "9         10        BOR      Gabriel Bortoleto      Kick Sauber         5\n",
+            "10        11        PIA          Oscar Piastri          McLaren        81\n",
             "11        12        NOR           Lando Norris          McLaren         4\n",
-            "12        13        HAM         Lewis Hamilton          Ferrari        44\n",
-            "13        14        BOR      Gabriel Bortoleto      Kick Sauber         5\n",
-            "14        15        SAI           Carlos Sainz         Williams        55\n",
+            "12        13        ANT  Andrea Kimi Antonelli         Mercedes        12\n",
+            "13        14        RUS         George Russell         Mercedes        63\n",
+            "14        15        TSU           Yuki Tsunoda     Racing Bulls        22\n",
             "15        16        HAD           Isack Hadjar     Racing Bulls         6\n",
-            "16        17        RUS         George Russell         Mercedes        63\n",
-            "17        18        DOO            Jack Doohan           Alpine         7\n",
-            "18        19        PIA          Oscar Piastri          McLaren        81\n",
-            "19        20        BEA         Oliver Bearman     Haas F1 Team        87\n"
+            "16        17        VER         Max Verstappen  Red Bull Racing         1\n",
+            "17        18        LAW            Liam Lawson  Red Bull Racing        30\n",
+            "18        19        ALB        Alexander Albon         Williams        23\n",
+            "19        20        SAI           Carlos Sainz         Williams        55\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# creating data tables - laps\n",
+        "\n",
+        "print(session.laps.columns)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "bpzxxqk-v5Hn",
+        "outputId": "0fced873-082f-4a7c-8412-710af571c580"
+      },
+      "execution_count": 287,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Index(['Time', 'Driver', 'DriverNumber', 'LapTime', 'LapNumber', 'Stint',\n",
+            "       'PitOutTime', 'PitInTime', 'Sector1Time', 'Sector2Time', 'Sector3Time',\n",
+            "       'Sector1SessionTime', 'Sector2SessionTime', 'Sector3SessionTime',\n",
+            "       'SpeedI1', 'SpeedI2', 'SpeedFL', 'SpeedST', 'IsPersonalBest',\n",
+            "       'Compound', 'TyreLife', 'FreshTyre', 'Team', 'LapStartTime',\n",
+            "       'LapStartDate', 'TrackStatus', 'Position', 'Deleted', 'DeletedReason',\n",
+            "       'FastF1Generated', 'IsAccurate'],\n",
+            "      dtype='object')\n"
           ]
         }
       ]
